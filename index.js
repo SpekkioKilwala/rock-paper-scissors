@@ -3,6 +3,7 @@
 // alert("JS is running");
 
 const moves = ["rock", "paper", "scissors"]
+const roundsPerMatch = 5; // might want to make this variable later without changing the name
 let wins = 0;
 let draws = 0;
 let losses = 0;
@@ -82,4 +83,21 @@ function playRound() {
             console.log("Invalid response, discarding round result.");
     }
     console.log(`Wins: ${wins} | Draws: ${draws} | Losses: ${losses}`);
+}
+
+function game(){
+    // reset scores, play a predetermined number of rounds (default 5) then declare game end
+    newGame()
+    let summary = "Game not finished yet!";
+    for (let i = 0; i < roundsPerMatch; i++){
+        playRound()
+    }
+    if (wins > losses) {
+        summary = "A winner is you!"
+    } else if (wins == losses) {
+        summary = "It's a draw!"
+    } else {
+        summary = "Dishonour on YOU, dishonour on your ANCESTORS, dishonour on your COW..."
+    }
+    console.log("Game over!")
 }
