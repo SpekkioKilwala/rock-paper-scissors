@@ -99,5 +99,6 @@ function game(){
     } else {
         summary = "Dishonour on YOU, dishonour on your ANCESTORS, dishonour on your COW..."
     }
-    console.log("Game over!")
+    console.log("Game over!");
+    console.log(summary);
 }
