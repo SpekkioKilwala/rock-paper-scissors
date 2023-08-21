@@ -20,7 +20,7 @@ function matchUp(playerMove, computerMove) {
     playerMove = playerMove.toLowerCase()
     computerMove = computerMove.toLowerCase()
     if (playerMove == computerMove) {
-        return "Draw!"
+        return `Draw! Both chose ${playerMove}.`
     }
     switch (playerMove) {
         case "rock":
