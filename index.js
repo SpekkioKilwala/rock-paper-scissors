@@ -8,9 +8,20 @@ let wins = 0;
 let draws = 0;
 let losses = 0;
 
+const btRock = document.querySelector('#rock');
+const btPaper = document.querySelector('#paper');
+const btScissors = document.querySelector('#scissors');
+const btRestart = document.querySelector('#restart');
+
+btRock.addEventListener('click', () => {playRound('rock')})
+btPaper.addEventListener('click', () => {playRound('paper')})
+btScissors.addEventListener('click', () => {playRound('scissors')})
+btRestart.addEventListener('click', () => {newGame();})
+
 function newGame() {
     // Resets all the tally stuff to zero
     wins = draws = losses = 0;
+    displayScore();
 }
 
 function roundsPlayed() {
@@ -60,9 +71,8 @@ function matchUp(playerMove, computerMove) {
     }
 }
 
-function playRound() {
+function playRound(playerMove) {
     // Accept player and computer moves, see who the winner is, add the result to the totals.
-    let playerMove = prompt("Pick: rock, paper, or scissors!");
     let computerMove = getComputerMove();
     let roundOutcome = matchUp(playerMove, computerMove);
     console.log(roundOutcome);
@@ -82,16 +92,15 @@ function playRound() {
         default:
             console.log("Invalid response, discarding round result.");
     }
+    displayScore();
+}
+
+function displayScore() {
     console.log(`Wins: ${wins} | Draws: ${draws} | Losses: ${losses}`);
 }
 
-function game(){
-    // reset scores, play a predetermined number of rounds (default 5) then declare game end
-    newGame()
-    let summary = "Game not finished yet!";
-    for (let i = 0; i < roundsPerMatch; i++){
-        playRound()
-    }
+function gameOver(){
+    // Count up the points and declare a winner.
     if (wins > losses) {
         summary = "A winner is you!"
     } else if (wins == losses) {
