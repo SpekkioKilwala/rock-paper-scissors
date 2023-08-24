@@ -7,20 +7,34 @@ const roundsPerMatch = 5; // might want to make this variable later without chan
 let wins = 0;
 let draws = 0;
 let losses = 0;
+let gameStatus = "";
 
 const btRock = document.querySelector('#rock');
 const btPaper = document.querySelector('#paper');
 const btScissors = document.querySelector('#scissors');
 const btRestart = document.querySelector('#restart');
+const statusDisplay = document.querySelector('#status');
 
 btRock.addEventListener('click', () => {playRound('rock')})
 btPaper.addEventListener('click', () => {playRound('paper')})
 btScissors.addEventListener('click', () => {playRound('scissors')})
 btRestart.addEventListener('click', () => {newGame();})
 
+function addStatusLine(line) {
+    // Trim off the FRONT end if it's too long,
+    // add the given string to the end of status,
+    // and display.
+    if (gameStatus.length > 1000) {
+        gameStatus = gameStatus.slice(-1000);
+    }
+    gameStatus = (gameStatus + "\r\n" + line).trim()
+    statusDisplay.textContent = gameStatus;
+}
+
 function newGame() {
     // Resets all the tally stuff to zero
     wins = draws = losses = 0;
+    gameStatus = "";
     displayScore();
 }
 
@@ -78,25 +92,25 @@ function playRound(playerMove) {
     console.log(roundOutcome);
     switch (roundOutcome) {
         case "win":
-            console.log(`You win! ${playerMove} beats ${computerMove}.`);
+            addStatusLine(`You win! ${playerMove} beats ${computerMove}.`);
             wins++;
             break;
         case "draw":
-            console.log(`Draw! Both picked ${playerMove}.`);
+            addStatusLine(`Draw! Both picked ${playerMove}.`);
             draws++;
             break;
         case "lose":
-            console.log(`You lose! ${playerMove} loses to ${computerMove}.`);
+            addStatusLine(`You lose! ${playerMove} loses to ${computerMove}.`);
             losses++;
             break;
         default:
-            console.log("Invalid response, discarding round result.");
+            addStatusLine("Invalid response, discarding round result.");
     }
     displayScore();
 }
 
 function displayScore() {
-    console.log(`Wins: ${wins} | Draws: ${draws} | Losses: ${losses}`);
+    addStatusLine(`Wins: ${wins} | Draws: ${draws} | Losses: ${losses}`);
 }
 
 function gameOver(){
@@ -108,6 +122,6 @@ function gameOver(){
     } else {
         summary = "Dishonour on YOU, dishonour on your ANCESTORS, dishonour on your COW..."
     }
-    console.log("Game over!");
-    console.log(summary);
+    addStatusLine("Game over!");
+    addStatusLine(summary);
 }
