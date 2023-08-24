@@ -1,0 +1,19 @@
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0px;
+}
+
+.header {
+    background-color: rgb(31, 31, 31);
+    color: rgb(255, 255, 255);
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header div {
+    margin: 10px;
+}
