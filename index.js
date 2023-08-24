@@ -36,7 +36,7 @@ function addStatusLine(line) {
 function newGame() {
     // Resets all the tally stuff to zero
     wins = draws = losses = 0;
-    gameStatus = "Game ready! CHOOSE YOUR FIGHTER!";
+    addStatusLine("Game ready! CHOOSE YOUR FIGHTER!")
     displayScore();
 }
 
@@ -109,14 +109,20 @@ function playRound(playerMove) {
             addStatusLine("Invalid response, discarding round result.");
     }
     displayScore();
+    checkGameOver();
 }
 
 function displayScore() {
     addStatusLine(`Wins: ${wins} | Draws: ${draws} | Losses: ${losses}`);
 }
 
+function checkGameOver(){
+    if (wins + draws + losses >= 5) {gameOver()}
+}
+
 function gameOver(){
     // Count up the points and declare a winner.
+    let summary = "Tallying scores..."; // should never actually display
     if (wins > losses) {
         summary = "A winner is you!"
     } else if (wins == losses) {
@@ -126,4 +132,5 @@ function gameOver(){
     }
     addStatusLine("Game over!");
     addStatusLine(summary);
+    newGame();
 }
