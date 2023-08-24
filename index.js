@@ -20,6 +20,8 @@ btPaper.addEventListener('click', () => {playRound('paper')})
 btScissors.addEventListener('click', () => {playRound('scissors')})
 btRestart.addEventListener('click', () => {newGame();})
 
+newGame();
+
 function addStatusLine(line) {
     // Trim off the FRONT end if it's too long,
     // add the given string to the end of status,
@@ -34,7 +36,7 @@ function addStatusLine(line) {
 function newGame() {
     // Resets all the tally stuff to zero
     wins = draws = losses = 0;
-    gameStatus = "";
+    gameStatus = "Game ready! CHOOSE YOUR FIGHTER!";
     displayScore();
 }
 
