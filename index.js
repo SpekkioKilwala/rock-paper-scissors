@@ -18,7 +18,10 @@ const statusDisplay = document.querySelector('#status');
 btRock.addEventListener('click', () => {playRound('rock')})
 btPaper.addEventListener('click', () => {playRound('paper')})
 btScissors.addEventListener('click', () => {playRound('scissors')})
-btRestart.addEventListener('click', () => {newGame();})
+btRestart.addEventListener('click', () => {
+    gameStatus = "";
+    newGame();
+})
 
 newGame();
 
@@ -132,5 +135,6 @@ function gameOver(){
     }
     addStatusLine("Game over!");
     addStatusLine(summary);
+    addStatusLine("===----------------===")
     newGame();
 }

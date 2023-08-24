@@ -40,14 +40,22 @@ body {
     flex-direction: column;
 }
 
-#status {
+#status-box {
     border: 3px solid black;
     border-radius: 4px;
     width: 400px;
     height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow:hidden;
+}
+
+#status {
     margin: 10px;
     padding: 10px;
     white-space: pre-line;
+    text-align: center;
 }
 
 button {
