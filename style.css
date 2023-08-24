@@ -17,3 +17,38 @@ body {
 .header div {
     margin: 10px;
 }
+
+.content {
+    display: flex;
+    flex-direction: row;
+    /* border: red dotted 1px; */
+    align-items: center;
+    justify-content: center;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    /* border: red dotted 1px; */
+    margin: 40px;
+}
+
+.right {
+    /* border: red dotted 1px; */
+    display: flex;
+    flex-direction: column;
+}
+
+#status {
+    border: 3px solid black;
+    border-radius: 4px;
+    width: 400px;
+    height: 400px;
+    padding: 10px;
+}
+
+button {
+    padding: 10px;
+    margin: 10px;
+}
+
